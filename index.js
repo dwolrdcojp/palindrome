@@ -29,7 +29,14 @@ function Phrase(content) {
 
 	// Returns content processed for palindrome testing.
 	this.processedContent = function() {
-		return this.processor(this.content);
+		return this.letters().toLowerCase();
+	}
+
+	// Returns the letters in the content.
+	// For example:
+	// 		new Phrase("Hello, world!").letters() === "Helloworld"
+	this.letters = function letters() {
+		return Array.from(this.content).filter(c => c.match(/[a-z]/i)).join("");
 	}
 
 	// Returns true if the phrase is a palindrome, false otherwise.
